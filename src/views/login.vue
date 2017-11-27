@@ -20,7 +20,7 @@
                             </Input>
                         </FormItem>
                         <FormItem prop="password">
-                            <Input type="password" v-model="form.password" placeholder="请输入密码">
+                            <Input type="password" v-model="form.password" placeholder="请输入密码" ref="passRef">
                             <span slot="prepend">
                                     <Icon :size="16" type="locked"></Icon>
                                 </span>
@@ -74,7 +74,8 @@
 //                        params.append('data',this.form);
 //                        console.log(params.toString());
                         util.ajax.post('/login',Qs.stringify(this.form)).then(res => {
-                            if (res.data == 'success') {
+                            console.log(res)
+                            if (res.data.data == 'success') {
                                 Cookies.set('user', this.form.userName);
                                 this.$store.commit('setAvator', 'http://pic.3h3.com/up/2012-12/2012121227271453316926.jpg');
                                 if (this.form.userName === 'xx') {
@@ -86,6 +87,9 @@
                                     name: 'home_index'
                                 });
                             } else {
+                                this.form.password = '';
+                                this.$refs.passRef.focus();
+                                this.$Message.error('密码错误,请重新输入');
                                 this.$router.push({
                                     name: 'login'
                                 });

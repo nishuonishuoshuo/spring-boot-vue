@@ -13,7 +13,7 @@ util.title = function (title) {
 util.Qs = Qs
 
 const ajaxUrl = env === 'development'
-    ? 'http://localhost:8888'
+    ? 'http://172.16.9.163:8888'
     : env === 'production'
         ? 'https://www.url.com'
         : 'https://debug.url.com';
