@@ -62,7 +62,7 @@
             validator() {
                 util.ajax.post('/login', util.Qs.stringify(this.subData)).then(res => {
                     console.log(res.data)
-                    if (res.data.data == 'success') {
+                    if (res.data.errorCode == '000000') {
                         this.avatorLeft = '0px';
                         this.inputLeft = '400px';
                         this.password = '';

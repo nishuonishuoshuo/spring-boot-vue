@@ -75,7 +75,7 @@
 //                        console.log(params.toString());
                         util.ajax.post('/login',Qs.stringify(this.form)).then(res => {
                             console.log(res)
-                            if (res.data.data == 'success') {
+                            if (res.data.errorCode == '000000') {
                                 Cookies.set('user', this.form.userName);
                                 this.$store.commit('setAvator', 'http://pic.3h3.com/up/2012-12/2012121227271453316926.jpg');
                                 if (this.form.userName === 'xx') {

@@ -37,6 +37,7 @@ const app = {
         setTagsList (state, list) {
             state.tagsList.push(...list);
         },
+        //更新菜单接口
         updateMenulist (state) {
             let accessCode = parseInt(Cookies.get('access'));
             let menuList = [];

@@ -190,10 +190,12 @@ util.setCurrentPath = function (vm, name) {
 };
 
 util.openNewPage = function (vm, name, argu, query) {
+    //存当前打开页面状态
     let pageOpenedList = vm.$store.state.app.pageOpenedList;
     let openedPageLen = pageOpenedList.length;
     let i = 0;
     let tagHasOpened = false;
+    //判断页面是否已经打开
     while (i < openedPageLen) {
         if (name === pageOpenedList[i].name) {  // 页面已经打开
             vm.$store.commit('pageOpenedList', {
@@ -206,8 +208,10 @@ util.openNewPage = function (vm, name, argu, query) {
         }
         i++;
     }
+    //页面没有打开
     if (!tagHasOpened) {
         let tag = vm.$store.state.app.tagsList.filter((item) => {
+            console.log(item);
             if (item.children) {
                 return name === item.children[0].name;
             } else {
